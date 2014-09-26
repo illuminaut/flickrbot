@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include inc/header %>
+  <body>
+    <script src="/javascripts/knockout-js-infinite-scroll.js"></script>
+    <script src="/javascripts/underscore-min.js"></script>
+    <script src="/javascripts/favorites.js"></script>
+    <% include inc/navbar %>
+    <!--div class="container-fluid">
+      <div class="row"-->
+        <!--div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="/">Overview</a></li>
+            <li><a href="/contacts">Contacts</a></li>
+            <li class="active"><a href="/favorites">Favorites</a></li>
+            <li><a href="/analytics">Analytics</a></li>
+            <li><a href="/log">Activity Log</a></li>
+          </ul>
+        </div-->
+        <!--div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"-->
+        <div class="col-xs-12 col-sm-9 col-md-10 main">
+          <div id="notification"></div>
+
+          <div class="row" id="main-content">
+            <h2 class="sub-header">Favorites</h2>
+            <h6 class="sub-header">Total: <span data-bind="text: items().length"></span>
+              , Displayed: <span data-bind="text: items.infinitescroll.numItemsPerPage()"></span>
+              , Rendered: <span data-bind="text: items.infinitescroll.displayItems().length - items.infinitescroll.firstHiddenIndex()"></span>
+            </h6>
+            <div id="favesthumbs" data-bind="foreach: items.infinitescroll.displayItems">
+              <div class="contact"><!--data-bind="event: {mouseover: showCaption, mouseout: hideCaption}" class="contact">-->
+                <div class="caption .btn-group. btn-group-justified">
+                  <a data-bind="attr: {href: linkurl}" target="flickr" class="btn btn-xs btn-info" rel="tooltip" title="View"><span class="glyphicon glyphicon-eye-open"></span></a>
+                  <!--a data-bind="click: removefave" class="btn btn-xs btn-info" rel="tooltip" title="Remove"><span class="glyphicon glyphicon-remove"></span></a-->
+                  <!--a data-bind="click: function(data, event) {if (removefave()) {$parent.removeitem}} " class="btn btn-xs btn-info" rel="tooltip" title="Remove"><span class="glyphicon glyphicon-remove"></span></a-->
+                  <a data-bind="click: $parent.removeitem" class="btn btn-xs btn-info" rel="tooltip" title="Remove"><span class="glyphicon glyphicon-remove"></span></a>
+                  <a data-bind="attr: {title: addvip}, click: setvip" class="btn btn-xs btn-info" rel="tooltip"><span data-bind="css: hearticon" class="glyphicon"></span></a>
+                  <p data-bind="text: dateadded" class="text-center small"></p>
+                </div>
+                <!--a data-bind="attr: {href: linkurl}" target="flickr"-->
+                  <img data-bind="attr: {src: imagesrc, class: photoclass}">
+                <!--/a-->
+              </div>
+            </div><!-- /foreach .rows -->
+          </div>
+        </div><!-- /.main -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </body>

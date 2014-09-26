@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include inc/header %>
+  <body>
+    <script src="/javascripts/activitylog.js"></script>
+
+   <% include inc/navbar %>
+        <div class="col-xs-12 col-sm-9 col-md-10 main">
+          <div id="notification"></div>
+
+          <div class="row">
+            <h2 class="sub-header">Activity Log</h2>
+            <div class="panel-body">
+              <div id="tablebody"></div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Action</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody data-bind="foreach: rows">
+                  <tr>
+                    <td data-bind="text: timestamp"></td>
+                    <td data-bind="text: action"></td>
+                    <td data-bind="text: message"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

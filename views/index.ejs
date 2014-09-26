@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include inc/header %>
+  <body>
+    <script src="/javascripts/dashboard.js"></script>
+    <% include inc/navbar %>
+    <!--div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left"-->
+        <!--div class="col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+          <ul class="nav">
+            <li class="active"><a href="/">Overview</a></li>
+            <li><a href="/contacts">Contacts</a></li>
+            <li><a href="/favorites">Favorites</a></li>
+            <li><a href="/analytics">Analytics</a></li>
+            <li><a href="/log">Activity Log</a></li>
+          </ul>
+        </div-->
+        <!--div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"-->
+        <div class="col-xs-12 col-sm-9 col-md-10 main">
+          <div id="notification" class="alert-messages"></div>
+          <h1 class="page-header">Dashboard</h1>
+
+          <div class="row">
+            <div class="col-sm-6 col-lg-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Contacts <a href="" onclick='return false;'><span class="glyphicon glyphicon-refresh pull-right" id="refreshcontacts"></span></a>
+                </div>
+                <div class="panel-body">
+                  <div class="clearfix">
+                  Last Synced: <span id="lastsynccontacts" class="value">n/a </span> &nbsp;<button type="button" class="btn btn-default btn-sm pull-right" id="synccontacts">Synchronize</button>
+                  </div>
+                  <div id="contactsthumbs">No data (hit refresh)</div>
+                </div>
+                <div class="panel-footer">
+                  <div id="contacts-console">Total: <span id="totalcontacts">0</span> (Mutual: <span id="mutualcontacts">0</span>)</div>
+                  <div id="contacts-progress" class="progress hidden" style="margin-bottom:0px">
+                    <div id="contacts-progressbar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+    
+                </div>
+              </div>
+            </div><!-- /.col-sm-4 -->
+            <div class="col-sm-6 col-lg-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Favorites <a href="" onclick='return false;'><span class="glyphicon glyphicon-refresh pull-right" id="refreshfaves"></span></a></h3>
+                </div>
+                <div class="panel-body">
+                  <div class="clearfix">
+                  Last Synced: <span id="lastsyncfaves" class="value">n/a </span> &nbsp;<button type="button" class="btn btn-default btn-sm pull-right" id="syncfaves">Synchronize</button>
+                  </div>
+                  <div  id="favesthumbs">No data (hit refresh)</div>
+                </div>
+                <div class="panel-footer">
+                  <div id="faves-console">Total: <span id="totalfaves">0</span> (Protected: <span id="protectedfaves">0</span>)</div>
+                  <div id="faves-progress" class="progress hidden" style="margin-bottom:0px">
+                    <div id="faves-progressbar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.col-sm-4 -->
+            <div class="col-sm-6 col-lg-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Add Favorites</h3>
+                </div>
+                <div class="panel-body">
+                  <form class="form-horizontal" role="form">
+                    <div class="form-group form-group-sm">
+                      <label for="addfavesgroup" class="col-sm-4 control-label">Group </label>
+                      <div class="col-sm-8">
+                        <select id="addfavesgroup" name="addfavesgroup" class="form-control input-sm">
+                          <option value="34427469792@N01">FlickrCentral</option>
+                          <option value="38436807@N00">FlickrToday</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="maxfaves" class="col-sm-4 control-label">Max Faves</label>
+                      <div class="col-sm-3">
+                        <input id="maxfaves" type="text" size="5" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="userlimit" class="col-sm-4 control-label">Per User Limit</label>
+                      <div class="col-sm-3">
+                        <input id="userlimit" type="text" size="5" class="form-control">
+                      </div>
+                    </div>
+                    <div id="addfavesregion" class="form-group form-group-sm">
+                      <label for="lastaddfaves" class="col-sm-4 control-label">Last Run</label>
+                      <div class="col-sm-8">
+                        <span id="lastaddfaves" class="col-sm-6 value">n/a</span>
+                        <button type="button" class="btn btn-primary btn-sm" id="addfaves">Add Faves</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-footer">
+                  <span id="addfaves-console">Ok.</span>
+                  <div id="addfaves-progress" class="progress hidden" style="margin-bottom:0px">
+                    <div id="addfaves-progressbar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Cleanup Favorites</h3>
+                </div>
+                <div class="panel-body">
+                  <form class="form-horizontal" role="form">
+                    <div class="form-group form-group-sm">
+                      <label for="maxnum" class="col-sm-4 control-label">Max Faves</label>
+                      <div class="col-sm-3">
+                        <input id="maxnum" type="text" size="5" value="10" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                      <label for="minage" class="col-sm-4 control-label">Min Age in Days</label>
+                      <div class="col-sm-3">
+                        <input id="minage" type="text" size="5" value="7" class="form-control">
+                      </div>
+                    </div>
+                    <div id="cleanupregion" class="form-group form-group-sm">
+                      <label for="lastcleanupfaves" class="col-sm-4 control-label">Last Clean-Up</label>
+                      <div class="col-sm-8">
+                        <span id="lastcleanupfaves" class="col-sm-6 value">n/a</span>
+                        <button type="button" class="btn btn-primary btn-sm" id="cleanup">Clean Up</button>
+                      </div>
+                    </div>
+                    <div id="checkactivityregion" class="form-group form-group-sm">
+                      <label for="lastactivitycheck" class="col-sm-4 control-label">Last Activity Check</label>
+                      <div class="col-sm-8">
+                        <span id="lastactivitycheck" class="col-sm-6 value">n/a</span>
+                        <button type="button" class="btn btn-default btn-sm" id="getactivity">Get Activity</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-footer">
+                  <span id="cleanup-console">Ok.</span>
+                  <div id="cleanup-progress" class="progress hidden" style="margin-bottom:0px">
+                    <div id="cleanup-progressbar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /.col-sm-4 -->
+          </div><!-- /.row -->
+        </div><!-- /.main -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </body>
+</html>

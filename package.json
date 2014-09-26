@@ -1,0 +1,24 @@
+{
+  "name": "flickrbot",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "body-parser": "~1.8.1",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.0.0",
+    "ejs": "~0.8.5",
+    "engine.io": "^1.4.0",
+    "express": "~4.9.0",
+    "express-partials": "^0.3.0",
+    "flickrapi": "^0.3.23",
+    "morgan": "~1.3.0",
+    "mysql": "^2.5.0",
+    "primus": "^2.4.6",
+    "serve-favicon": "~2.1.3"
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include inc/header %>
+  <body>
+    <script src="/javascripts/contacts.js"></script>
+    <% include inc/navbar %>
+        <div class="col-xs-12 col-sm-9 col-md-10 main">
+          <div id="notification"></div>
+
+          <div class="row">
+            <h2 class="sub-header">Contacts</h2>
+            <!--div class="panel panel-default"-->
+              <!--div class="panel-body"-->
+              <div id="contactsthumbs" data-bind="foreach: rows">
+            <!--div class="row" data-bind="foreach: rows"-->
+              <!--div class="col-xs-6 col-md-1"-->
+                <!--a href="#" class="thumbnail"-->
+                <div class="contact">
+                  <a data-bind="attr: {href: linkurl}" target="flickr">
+                    <img data-bind="attr: {src: imagesrc, class: photoclass, title: username}">
+                  </a>
+                </div>
+              </div><!-- /foreach .rows -->
+            </div>
+          
+        </div><!-- /.main -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </body>
